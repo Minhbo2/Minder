@@ -18,30 +18,71 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/authenTextView"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/iconLinearLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please Log In or Sign Up"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/appIconImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/welcomeTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:text="Welcome to Minder"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/signUpFormButton"
+            android:id="@+id/authenFormButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_blue_light"
-            android:onClick="authenticationForm"
             android:text="Sign Up" />
 
-        <Button
-            android:id="@+id/logInFormButton"
+        <LinearLayout
+            android:id="@+id/toggleAuthLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="authenticationForm"
-            android:text="Log In" />
+            android:layout_marginTop="20dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/alreadyAUserTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:text="ALready a user?" />
+
+            <TextView
+                android:id="@+id/toggleAuthTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:paddingTop="0dp"
+                android:text="Sign In"
+                android:textColor="@android:color/holo_blue_dark" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -105,7 +146,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/logInLinearLayout"
+        android:id="@+id/signInLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"

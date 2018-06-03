@@ -1,10 +1,12 @@
 package com.example.minhb.minder;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,12 @@ import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity {
 
+    Boolean isSignUp = false;
+
+    TextView alreadyAUserTextView;
+    Button authenFormButton;
+    TextView toggleAuthTextView;
+
 
 
     @Override
@@ -27,29 +35,67 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("Welcome to Minder");
 
-//        if(ParseUser.getCurrentUser() != null)
-//            showUserTasksActivity();
+        if(ParseUser.getCurrentUser() != null)
+            showUserTasksActivity();
 
-        ParseUser.logOut();
+//        ParseUser.logOut();
+
+        alreadyAUserTextView = findViewById(R.id.alreadyAUserTextView);
+        authenFormButton = findViewById(R.id.authenFormButton);
+        toggleAuthTextView = findViewById(R.id.toggleAuthTextView);
+        toggleAuthTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleAuthentication();
+            }
+        });
+        toggleAuthentication();
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
     }
 
 
+
+
+    private void toggleAuthentication()
+    {
+        isSignUp = !isSignUp;
+
+        if(!isSignUp)
+        {
+            alreadyAUserTextView.setText("Not a Minder?");
+            authenFormButton.setText("Sign In");
+            authenFormButton.setBackgroundColor(Color.GRAY);
+            authenFormButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LinearLayout signInLinearLayout = findViewById(R.id.signInLinearLayout);
+                    signInLinearLayout.setVisibility(View.VISIBLE);
+                    authenticationForm(view);
+                }
+            });
+            toggleAuthTextView.setText("Sign Up");
+        }
+        else
+        {
+            alreadyAUserTextView.setText("Already a Minder?");
+            authenFormButton.setText("Sign Up");
+            authenFormButton.setBackgroundColor(Color.parseColor("#FF33B5E5"));
+            authenFormButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LinearLayout signUpLinearLayout = findViewById(R.id.signUpLinearLayout);
+                    signUpLinearLayout.setVisibility(View.VISIBLE);
+                    authenticationForm(view);
+                }
+            });
+            toggleAuthTextView.setText("Sign In");
+        }
+    }
+
+
     public void authenticationForm(View view)
     {
-        int buttonId = view.getId();
-        if(buttonId == R.id.signUpFormButton)
-        {
-            LinearLayout signUpLinearLayout = findViewById(R.id.signUpLinearLayout);
-            signUpLinearLayout.setVisibility(View.VISIBLE);
-        }
-        else if(buttonId == R.id.logInFormButton)
-        {
-            LinearLayout logInLinearLayout = findViewById(R.id.logInLinearLayout);
-            logInLinearLayout.setVisibility(View.VISIBLE);
-        }
-
         View parent = (View)view.getParent();
         parent.setVisibility(View.INVISIBLE);
     }
@@ -116,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO: (1)refactor
     /*
-    * MAIN: simplify the authentication process
     * NEWTASKFORM: redo weather selection option for icons instead of strings*/
 
     //TODO: (2)UI/UX
