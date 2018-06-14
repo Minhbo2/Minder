@@ -1,4 +1,4 @@
-package com.example.minhb.minder;
+package com.example.minhb.minder.Activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.minhb.minder.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -21,7 +22,6 @@ import com.parse.SaveCallback;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;

@@ -1,21 +1,20 @@
-package com.example.minhb.minder;
+package com.example.minhb.minder.Activities;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.minhb.minder.R;
 import com.parse.LogInCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity {
@@ -162,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO: (1)refactor
     /*
-    * NEWTASKFORM: redo weather selection option for icons instead of strings*/
+    * NEWTASKFORM: redo weather selection option for icons instead of strings
+    * BACKBUTTON: back arrow in menu to go back to previous activity*/
 
     //TODO: (2)UI/UX
     /*

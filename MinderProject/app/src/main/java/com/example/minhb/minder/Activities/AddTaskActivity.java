@@ -1,29 +1,24 @@
-package com.example.minhb.minder;
+package com.example.minhb.minder.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.minhb.minder.R;
+import com.example.minhb.minder.TaskAdapter;
+import com.example.minhb.minder.TaskContainer;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddTaskActivity extends AppCompatActivity {
+public class AddTaskActivity extends BaseActivity {
 
     RecyclerView tasksRecyclerView;
     List<TaskContainer> tasksList;

@@ -18,6 +18,13 @@ public class ParseInit extends Application
         );
 
 
+        // disable this setting if we do not want user to automatic sign up or sign in
+        // ParseUser.enableAutomaticUser();
+
+        ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
+        defaultACL.setPublicWriteAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
 
 //        parse dashboard pass : IIS7RaCZYzPg
 //        dsn: ec2-52-53-230-153.us-west-1.compute.amazonaws.com
